@@ -1,0 +1,1 @@
+(()=>{"use strict";const o=new class{add(...o){return o.reduce(((o,l)=>o+l),0)}};(new class{log(o){console.log("--------------------"),console.log(o),console.log("--------------------")}}).log(o.add(1,2,3))})();
