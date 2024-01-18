@@ -1,4 +1,14 @@
 
 module.exports = {
-    mode: "development"
+    mode: "development",
+    module: {
+        rules: [
+            {
+                test: /\.png$/,
+                use: [
+                    { loader: "file-loader"}
+                ]
+            }
+        ]
+    }
 }
