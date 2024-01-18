@@ -8,7 +8,6 @@
   },
   "author": "Daniil_Byrdin",
   "license": "ISC",
-  
   "browserslist": [
     "last 22 chrome versions",
     "not ie > 0"
@@ -24,6 +23,8 @@
     "@babel/preset-react": "^7.23.3"
   },
   "dependencies": {
-    "core.js": "^0.4.2"
+    "core.js": "^0.4.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
