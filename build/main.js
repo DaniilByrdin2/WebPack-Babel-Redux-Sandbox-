@@ -1,7 +1,7 @@
 class App {
   run() {
     const name = "World";
-    console.log(`Htllo ${name}`);
+    console.log("Htllo ".concat(name));
   }
 }
 const app = new App();
