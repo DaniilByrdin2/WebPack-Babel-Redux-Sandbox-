@@ -1,4 +1,7 @@
 
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
     mode: "development",
 
@@ -7,6 +10,7 @@ module.exports = {
     },
     
     module: {
+        // loaders
         rules: [
             // loading babel
             {
@@ -51,6 +55,24 @@ module.exports = {
                 ]
             },
 
+            // sass/scss
+            {
+                test: /\.(s[ca]ss)$/,
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" },
+                    { loader: 'sass-loader' },
+                ]
+            },
+
         ]
-    }
+    },
+
+    plugins: [
+        new HtmlWebpackPlugin( {
+            title: 'Hellow world!',
+            buildTime: new Date().toISOString(),
+            template: 'public/index.html'
+        } )
+    ]
 }

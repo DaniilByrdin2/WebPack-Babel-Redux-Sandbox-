@@ -9,12 +9,12 @@
 // app.run().then( () => console.log( "123" ) ).catch( res => console.log(res) )
 
 
-import React from "react";
-import  ReactDOM  from "react-dom";
+// import React from "react";
+// import  ReactDOM  from "react-dom";
 
 
-const App = () => <h1>Hello word!</h1>
+// const App = () => <h1>Hello word!</h1>
     
 
-ReactDOM.render(<App/>,
-document.getElementById("root"))
+// ReactDOM.render(<App/>,
+// document.getElementById("root"))
