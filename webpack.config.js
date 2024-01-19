@@ -8,8 +8,15 @@ module.exports = {
     
     module: {
         rules: [
+            // loading babel
             {
-                test: /\.png$/,
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: [ { loader: "babel-loader" } ]
+            },
+            // loading img
+            {
+                test: /\.(png|jpg|gif|ico|jpeg)$/,
                 use: [
                     { 
                         loader: "file-loader",
@@ -20,7 +27,30 @@ module.exports = {
                         }
                     }
                 ]
-            }
+            },
+            // loading fonts
+            {
+                test: /\.(ttf|otf|cot|waff)$/,
+                use: [
+                    { 
+                        loader: "file-loader",
+                        options: {
+                            name: '[name].[ext]', 
+                            outputPath: "fonts",
+
+                        }
+                    }
+                ]
+            },
+            // css
+            {
+                test: /\.css$/,
+                use: [
+                    { loader: 'style-loader' },
+                    { loader: "css-loader" },
+                ]
+            },
+
         ]
     }
 }

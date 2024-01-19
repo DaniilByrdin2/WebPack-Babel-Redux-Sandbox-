@@ -1,16 +1,29 @@
-import Log from "./log.js";
-import Calc from "./calc.js";
+// import Log from "./log.js";
+// import Calc from "./calc.js";
 
-import img from './logo-react.png';
+// import img from './logo-react.png';
 
-const calc = new Calc()
-const log = new Log()
+// const calc = new Calc()
+// const log = new Log()
 
 
-log.log( calc.add(1, 2, 3) )
+// log.log( calc.add(1, 2, 3) )
 
-const el = document.createElement('img')
-el.src = img
-el.width = 50
-el.height = 50
-document.body.appendChild( el )
+// const el = document.createElement('img')
+// el.src = img
+// el.width = 50
+// el.height = 50
+// document.body.appendChild( el )
+
+
+// --------------------------------------------------------
+
+
+import React from "react";
+import  ReactDOM  from "react-dom";
+import './main.css'
+
+
+const App = () => <h1>Hello</h1>
+
+ReactDOM.render( <App/> , document.getElementById('root') )
