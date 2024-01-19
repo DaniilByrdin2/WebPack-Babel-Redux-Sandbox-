@@ -44,7 +44,7 @@ module.exports = ( env = {} ) => {
         mode: isProd ? 'production': isDev && 'development', // production
     
         output: {
-            filename: isProd ? '[main]-[hash:8].[js]' : undefined,
+            filename: isProd ? 'main.js' : undefined,
         },
         
         module: {
