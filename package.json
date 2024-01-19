@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack"
+    "start": "webpack-dev-server  --env MODE=production",
+    "build": "webpack  --env MODE=development"
   },
   "author": "Daniil_Byrdin",
   "license": "ISC",
@@ -27,10 +28,12 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.6.0",
     "node-sass": "^9.0.0",
-    "sass-loader": "^14.0.0"
+    "sass-loader": "^14.0.0",
+    "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
     "core.js": "^0.4.2",
+    "mini-css-extract-plugin": "^2.7.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "style-loader": "^3.3.4",

@@ -24,6 +24,6 @@ import  ReactDOM  from "react-dom";
 import './main.scss'
 
 
-const App = () => <h1>Hello</h1>
+const App = () => <h1>WebPack</h1>
 
 ReactDOM.render( <App/> , document.getElementById('root') )
