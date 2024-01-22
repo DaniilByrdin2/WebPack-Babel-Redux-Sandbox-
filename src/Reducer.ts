@@ -7,7 +7,7 @@ const reducer = (state = 0, { type, payload }:any ) => {
             return state - 1
             break;
         case 'RND':
-            return state + payload
+            return state + +payload
             break;
 
         default:

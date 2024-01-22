@@ -1,14 +1,20 @@
-// import React from "react";
 import React = require("react");
 import { connect } from "react-redux";
 
 import * as actions from '../Actions'
 
 import { bindActionCreators } from "redux";
-import { Dispatch } from "redux";
+
   
 
-const Counter = (props: any) => {
+type propsType = {
+    dec: () => void,
+    inc: () => void,
+    rnd: () => void,
+    counter: number
+}
+
+const Counter = (props: propsType) => {
 
     return (
         <div>
@@ -21,16 +27,13 @@ const Counter = (props: any) => {
 
 }
 
-const MapStateToProps = (state: any) => {
+const MapStateToProps = (state: number) => {
     return {
         counter: state
     }
 }
 
-// console.log( actions );
-
-
-const MapDispatchToProps = ( dispatch: any ): any => {
+const MapDispatchToProps = ( dispatch: any ) => {
     const { inc, dec, rnd } =  bindActionCreators( actions, dispatch )
 
     return {
