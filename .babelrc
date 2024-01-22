@@ -8,7 +8,9 @@
             "useBuiltIns": "usage"
             // "useBuiltIns": "entry"
         } ],
-        "@babel/react" 
+
+        "@babel/react"
+        
     ],
 
     "plugins": [

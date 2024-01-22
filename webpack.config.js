@@ -1,6 +1,7 @@
 
 const MiniCssExtractPlugin  = require( 'mini-css-extract-plugin' );
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 
 module.exports = ( env = {} ) => {
@@ -26,13 +27,14 @@ module.exports = ( env = {} ) => {
                 title: 'Hellow world!',
                 buildTime: new Date().toISOString(),
                 template: 'public/index.html'
-            } )
+            } ),
+            new ESLintPlugin()
         ]
 
         if (isProd) {
             plugins.push(
                 new MiniCssExtractPlugin({
-                    filename: 'main-[hash:8].css'
+                    filename: 'bundle-[hash:8].css'
                 })
             )
         }
@@ -40,16 +42,33 @@ module.exports = ( env = {} ) => {
         return plugins
     }
 
+
     return {
         mode: isProd ? 'production': isDev && 'development', // production
     
         output: {
-            filename: isProd ? 'main.js' : undefined,
+            filename: isProd ? 'bundle.js' : undefined,
         },
+
         
         module: {
             // loaders
             rules: [
+                // ESLint 
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    loader: 'eslint-loader',
+                    options: {
+                        // eslint options (if necessary)
+                    },
+                },
+                // TS
+                {
+                    test: /\.tsx?$/,
+                    use: 'ts-loader',
+                    exclude: /node_modules/,
+                },
                 // loading babel
                 {
                     test: /\.js$/,
@@ -103,6 +122,10 @@ module.exports = ( env = {} ) => {
         },
     
         plugins: getPlugins(),
+
+        resolve: {
+            extensions: ['.tsx', '.ts', '.js'],
+        },
     
         devServer: {
             open: true

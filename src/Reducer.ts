@@ -1,4 +1,4 @@
-const reducer = (state = 0, { type, payload }) => {
+const reducer = (state = 0, { type, payload }:any ) => {
     switch (type) {
         case 'INC':
             return state + 1
