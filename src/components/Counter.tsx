@@ -1,11 +1,11 @@
 import React from "react";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import * as actions from '../Actions'
 
-import { bindActionCreators } from "redux";
-import obj from "./Counter.module.css"
 import logo from '../logo-react.png'
+import obj from "./Counter.module.css"
 
   
 
