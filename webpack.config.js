@@ -2,6 +2,7 @@
 const MiniCssExtractPlugin  = require( 'mini-css-extract-plugin' );
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const path = require('path');
 
 
 module.exports = ( env = {} ) => {
@@ -16,8 +17,8 @@ module.exports = ( env = {} ) => {
 
     const getStyleLoader = () => {
         return [
-            isProd ? MiniCssExtractPlugin.loader : 'style-loader',
-            'css-loader'
+            isProd ? MiniCssExtractPlugin.loader : 'style-loader'
+            // 'css-loader'
         ]
     }
 
@@ -35,7 +36,7 @@ module.exports = ( env = {} ) => {
             plugins.push(
                 new MiniCssExtractPlugin({
                     filename: 'bundle-[hash:8].css'
-                })
+                }),
             )
         }
 
@@ -44,12 +45,13 @@ module.exports = ( env = {} ) => {
 
 
     return {
-        mode: isProd ? 'production': isDev && 'development', // production
-    
+        mode: isProd ? 'production' : isDev && 'development', // production
+
         output: {
             filename: isProd ? 'bundle.js' : undefined,
         },
 
+        entry: './src/index.tsx',
         
         module: {
             // loaders
@@ -73,18 +75,18 @@ module.exports = ( env = {} ) => {
                 {
                     test: /\.js$/,
                     exclude: /node_modules/,
-                    use: [ { loader: "babel-loader" } ]
+                    use: [{ loader: "babel-loader" }]
                 },
                 // loading img
                 {
                     test: /\.(png|jpg|gif|ico|jpeg)$/,
                     use: [
-                        { 
+                        {
                             loader: "file-loader",
                             options: {
-                                name: '[name]-[sha1:hash:7].[ext]', 
+                                name: '[name]-[sha1:hash:7].[ext]',
                                 outputPath: "images",
-    
+
                             }
                         }
                     ]
@@ -93,42 +95,51 @@ module.exports = ( env = {} ) => {
                 {
                     test: /\.(ttf|otf|cot|waff)$/,
                     use: [
-                        { 
+                        {
                             loader: "file-loader",
                             options: {
-                                name: '[name].[ext]', 
+                                name: '[name].[ext]',
                                 outputPath: "fonts",
-    
+
                             }
                         }
                     ]
                 },
+
                 // css
                 {
                     test: /\.css$/,
-                    use: getStyleLoader()
+                    use: [
+                        ...getStyleLoader(),
+
+                        {
+                            loader: "css-loader",
+                            options: {
+                                modules: true
+                            }
+                        },
+
+                    ]
                 },
-    
+
                 // sass/scss
                 {
                     test: /\.(s[ca]ss)$/,
-                    use: [
-                        ...getStyleLoader(),
-                        { loader: 'sass-loader' },
-                    ]
+                    use: [ "style-loader", "css-loader", "sass-loader" ]
                 },
-    
-            ]
+            ],
+
         },
-    
+
         plugins: getPlugins(),
 
         resolve: {
             extensions: ['.tsx', '.ts', '.js'],
         },
-    
+
         devServer: {
-            open: true
+            open: true,
+            hot: true,
         }
     }
 }
