@@ -5,19 +5,23 @@ const { merge } = require('webpack-merge');
 
 
 module.exports = ( env = {} ) => {
-
-    const { MODE = 'development' } = env
     
     console.log( env );
-    console.log( MODE );
 
-    return [
-        merge(cfgDev,
-            { mode: "development", }
-        ),
-        merge(cfgProduction, 
-            { mode: "production" }
-        ),
-    ]
+    const prod = env.production
+
+    if ( prod ) {
+        return [
+            merge(cfgProduction,
+                { mode: "production" }
+            ),
+        ]
+    } else {
+        return [
+            merge(cfgDev,
+                { mode: "development", }
+            )
+        ]
+    }
 
 }

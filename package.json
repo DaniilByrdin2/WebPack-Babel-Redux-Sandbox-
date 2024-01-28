@@ -5,8 +5,8 @@
   "main": "src/index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --env MODE=development",
-    "build": "webpack  --env MODE=production"
+    "start": "webpack serve --env --mode development",
+    "build": "webpack --env --mode production"
   },
   "author": "Daniil_Byrdin",
   "license": "ISC",
