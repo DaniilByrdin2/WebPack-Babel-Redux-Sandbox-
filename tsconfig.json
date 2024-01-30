@@ -1,24 +1,18 @@
-
 {
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "outDir": "./dist/",
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
-    "jsx": "react",
-    "allowJs": true,
-    "moduleResolution": "node",
-  },
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "es6",
+        "target": "es5",
+        "jsx": "react",
+        "allowJs": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+    },
 
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "./cfg.d.ts"
-  ],
+    "include": ["**/*.ts", "**/*.tsx", "./cfg.d.ts"],
 
-  "exclude": [
-    "node_modules"
-  ]
+    "exclude": ["node_modules"],
 }
